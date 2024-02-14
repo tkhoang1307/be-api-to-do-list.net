@@ -80,3 +80,4 @@ C:\Users\tkhoa\OneDrive\Desktop\ToDoList\ToDoList\obj\Debug\net7.0\ref\ToDoList.
 C:\Users\tkhoa\OneDrive\Desktop\ToDoList\ToDoList\bin\Debug\net7.0\Npgsql.dll
 C:\Users\tkhoa\OneDrive\Desktop\ToDoList\ToDoList\bin\Debug\net7.0\Npgsql.EntityFrameworkCore.PostgreSQL.dll
 C:\Users\tkhoa\OneDrive\Desktop\ToDoList\ToDoList\bin\Debug\net7.0\appsettings.docker.json
+C:\Users\tkhoa\OneDrive\Desktop\ToDoList\ToDoList\obj\Debug\net7.0\ToDoList.sourcelink.json

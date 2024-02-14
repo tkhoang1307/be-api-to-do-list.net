@@ -60,15 +60,24 @@ namespace ToDoList.Service.Services
         {
             var response = new ApiResponse();
 
-            var dataResponse = await _unitOfWork.StatusRepository.UpdateStatus(statusId, statusUpdationRequest);
+            bool isExistedStatus = await _unitOfWork.StatusRepository.IsExistedStatus(statusId);
 
-            StatusResponseModel newStatus = new StatusResponseModel()
+            if (isExistedStatus)
             {
-                Id = dataResponse.Id,
-                Name = dataResponse.Name,
-            };
+                var dataResponse = await _unitOfWork.StatusRepository.UpdateStatus(statusId, statusUpdationRequest);
 
-            response.SetOk(newStatus);
+                StatusResponseModel newStatus = new StatusResponseModel()
+                {
+                    Id = dataResponse.Id,
+                    Name = dataResponse.Name,
+                };
+
+                response.SetOk(newStatus);
+            }
+            else
+            {
+                response.SetBadRequest(null, "This status existed");
+            }    
 
             return response;
         }

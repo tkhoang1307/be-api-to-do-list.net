@@ -48,5 +48,19 @@ namespace ToDoList.Repository.Repositories
 
             return dataStatus;
         }
+
+        public async Task<bool> IsExistedStatus(Guid idStatus)
+        {
+            IQueryable<Status> query = _dbSet;
+
+            Status? dataStatus = await query.Where(u => u.Id == idStatus).FirstOrDefaultAsync();
+
+            if (dataStatus == null)
+            {
+                return false;
+            }
+
+            return true;
+        }
     }
 }
