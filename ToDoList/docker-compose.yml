@@ -1,0 +1,36 @@
+version: '3.9'
+ 
+services:
+  api:
+    image: api-todolist:latest
+    build:
+      context: .
+      dockerfile: dockerfile
+    ports:
+      - 5000:80
+    depends_on:
+      - postgres
+    
+  postgres:
+    image: postgres:latest
+    container_name: my_postgres_container
+    environment:
+      POSTGRES_USER: myuser
+      POSTGRES_PASSWORD: mypassword
+      POSTGRES_DB: mydatabase
+    ports:
+      - "5433:5432"
+
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: my_pgadmin_container
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@myuser.com
+      PGADMIN_DEFAULT_PASSWORD: mypassword
+      PGADMIN_LISTEN_PORT: 5050
+    ports:
+      - "5051:5050"
+    depends_on:
+      - postgres
+  
